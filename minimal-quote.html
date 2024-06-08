@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quote</title>
+
+    <style>
+
+        .widget {
+            padding: 5px 5px ;
+            color: #809174;
+            text-align: right;
+                max-width: 95%;
+            margin: auto;
+            font-variant-caps: petite-caps;
+            font-size: 1.5em;
+
+        }
+
+        div {
+             width: 95%;
+             min-height: 100px;
+
+            background-repeat: no-repeat;
+            background-size: 20px 20px;
+}
+
+        .card {
+            padding: 25px 10px 25px 10px;
+            border-radius: 10px;
+            background: #fcfcf4;
+            color: #fff;
+            display: inline-block;
+            box-shadow: 2px 2px 1px 0px #ffffff;
+}
+     
+    </style>
+</head>
+<body>
+
+    <div class="widget" id="widget"></div>
+
+
+<script>
+
+quotes=[
+"As soon as you get clear, it clears up.",
+"Nothing to say, just go ahead.",
+"If you want to be interesting, you have to be interested.",
+"It's supposed to be hard. If it were easy, everyone would do it.",
+"Great things take time. ",
+"If it's important you'll find a way. If it's not, you'll find an excuse.",
+"Take your broken heart, make it into ART.",
+"A goal without a plan is just a wish.",
+];
+
+const INTERVAL = 86400000;
+
+function dispalyQuote(){
+
+    document.getElementById('widget').innerHTML =quotes[0];
+    quotes.forEach((quote, i) => {
+        setTimeout(() => {
+            document.getElementById('widget').innerHTML =quote;
+        }, i * INTERVAL);  
+    });
+    }
+
+    function dispalyWidget() {
+        dispalyQuote();
+        setTimeout(dispalyWidget, quotes.length*INTERVAL);
+    }
+    dispalyWidget()
+
+</script>
+
+</body>
+</html>
